@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         // 시작점이 되는 메인 뷰컨트롤러를 설정.
-        window?.rootViewController = MainTabController()
+        window?.rootViewController = UINavigationController(rootViewController: LoginController() )
         window?.makeKeyAndVisible()
     }
 

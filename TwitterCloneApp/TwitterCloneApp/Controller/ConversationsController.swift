@@ -17,13 +17,17 @@ class ConversationsController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemPurple
+        configureUI()
     }
     
     // Mark: - Helpers
     
-    func configureViewControllers() {
+    func configureUI() {
+        view.backgroundColor = .white
         
+        // 네비게이션 바에 타이틀 표기
+        navigationItem.title = "Messages"
     }
+
 
 }

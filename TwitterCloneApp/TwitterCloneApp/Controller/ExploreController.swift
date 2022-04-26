@@ -17,13 +17,17 @@ class ExploreController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .blue
+        configureUI()
     }
     
     // Mark: - Helpers
     
-    func configureViewControllers() {
+    func configureUI() {
+        view.backgroundColor = .white
         
+        // 네비게이션 바에 타이틀 표기
+        navigationItem.title = "Explore"
+
     }
 
 }

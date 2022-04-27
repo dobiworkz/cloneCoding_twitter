@@ -38,8 +38,16 @@ class Utilities {
         tf.font = UIFont.systemFont(ofSize: 16)
         // placeholder 색상 설정
         tf.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
         
         tf.isSecureTextEntry = isSecret
+        
+        // strong password로 텍스트필드가 묶이는 것을 방지.
+        //iOS12부터 패스워드를 자동으로 강력한 패스워드(Strong Password) 타입으로 자동으로 만들 수 (AutoFill) 있는데,
+        //강력한 패스워드가 자동으로 생성되면, 해당 내용은 iCloud Keychain 에 저장된다. 문제는 iCloud Keychain에 접근권한이 없어서 발생하는 문제로 파악된다.
+        if isSecret, #available(iOS 12.0, *){ tf.textContentType = .oneTimeCode }
+        
         return tf
     }
     

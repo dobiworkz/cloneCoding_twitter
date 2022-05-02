@@ -125,7 +125,10 @@ class RegistrationController: UIViewController{
         let userInfo = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
         
         AuthService.shared.registerUser(userInfo) { error, ref in
-            print("DEBUG: sign up successful.")
+            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
+            guard let tab = window.rootViewController as? MainTabController else { return }
+            tab.authenticateUserAndConfigureUI()
+            self.dismiss(animated: true)
         }
     }
     

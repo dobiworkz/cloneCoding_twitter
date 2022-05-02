@@ -19,6 +19,10 @@ struct AuthCredentials {
 struct AuthService {
     static let shared = AuthService()
     
+    func login(email: String, password: String, completion: AuthDataResultCallback?){
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
+    }
+    
     func registerUser(_ userinfo:AuthCredentials, completion: @escaping(Error?, DatabaseReference) -> Void) {
         
         // 이미지를 업로드하기위한 데이터로 변환

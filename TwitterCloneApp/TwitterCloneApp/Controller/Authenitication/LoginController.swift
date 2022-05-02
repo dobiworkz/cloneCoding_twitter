@@ -75,7 +75,23 @@ class LoginController: UIViewController{
 
     // MARK: - Selectors
     @objc func handleLogin(){
-        print(#function)
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        AuthService.shared.login(email: email, password: password){ result, error in
+            if let err = error{
+                print("DEBUG: login error \(err.localizedDescription)")
+                return
+            }
+            
+            // MainTabController에서 사용자정보가 없는 경우 UI셋팅을 하지 않고 로그인 화면을 올렸기 때문에
+            // 먼저 UI셋팅을 하고 로그인 화면을 dismiss해서 해제한다.
+            
+            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
+            guard let tab = window.rootViewController as? MainTabController else { return }
+            tab.authenticateUserAndConfigureUI()
+            self.dismiss(animated: true)
+        }
     }
     
     @objc func handleShowSignUp(){

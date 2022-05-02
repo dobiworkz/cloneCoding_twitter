@@ -31,7 +31,7 @@ class MainTabController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //logout()
         view.backgroundColor = .twitterBlue
         
         // 로그인 유무 확인 후 로그인 페이지로 이동

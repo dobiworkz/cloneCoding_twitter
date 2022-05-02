@@ -112,68 +112,20 @@ class RegistrationController: UIViewController{
     }
     
     @objc func handleRegistration() {
+        
         guard let profileImage = profileImage else {
-            print("Image error")
-            print(profileImage.debugDescription)
             return
         }
-        
-        print("====DEBUG====: set image ")
-        
-        // 이미지를 업로드하기위한 데이터로 변환
-        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
-        let fileName = NSUUID().uuidString
-        let storageRef = STORAGE_PROFILE_IMAGES.child(fileName)
-        
-        print("====DEBUG====: set filename ")
         
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         guard let fullname = fullNameTextField.text else { return }
         guard let username = userNameTextField.text else { return }
         
-        // 이미지 업로드
-        storageRef.putData(imageData, metadata: nil) { meta, error in
-            
-            // 이미지 업로드 후 접근 url 가져옴
-            storageRef.downloadURL { url, error in
-                
-                if let error = error {
-                    print("DEBUG: Error is \(error.localizedDescription)")
-                    return
-                } else {
-                    print("DEBUG: Succesfully upload image")
-                }
-                
-                
-                guard let profileImageUrl = url?.absoluteString else { return }
-                
-                // 계정 추가
-                Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                    if let error = error {
-                        print("DEBUG: Error is \(error.localizedDescription)")
-                        return
-                    }
-                    
-                    guard let uid = result?.user.uid else { return }
-                    
-                    // 사용자의 정보를 딕셔너리로 전달하여 realtime database에 정보를 갱신한다.
-                    // 이유는 아직 정확하게 확인하지 못했으나 db의 위치를 us-central1으로 처리해야 정상동작한다. url구조가 조금 상이함.
-                    let values = ["email" : email,
-                                  "username" : username,
-                                  "fullname" : fullname,
-                                  "profileImageUrl": profileImageUrl]
-                    
-                    REF_USERS.child(uid).updateChildValues(values){ error, ref in
-                        if let error = error {
-                            print("DEBUG: Error is \(error.localizedDescription)")
-                            return
-                        } else {
-                            print("DEBUG: Succesfully registerd user")
-                        }
-                    }
-                }
-            }
+        let userInfo = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
+        
+        AuthService.shared.registerUser(userInfo) { error, ref in
+            print("DEBUG: sign up successful.")
         }
     }
     

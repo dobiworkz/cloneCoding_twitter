@@ -12,6 +12,16 @@ import Firebase
 class MainTabController: UITabBarController {
     
     // MARK: - Properties
+    var user: User? {
+        didSet{ // user 정보는 로그인, 회원가입후 메인화면으로 접근할때 fetchUser()를 호출할때 셋팅함.
+            // MainTabController가 가지고있는 멤버 viewControllers 배열의 첫번째 데이터가 UINavigationController인지
+            // 해당 UINavigationContoller의 첫번쨰 스택이 FeedController인지 확인 후 feedController에 user정보를 넣어줌
+            guard let nav = viewControllers?[0] as? UINavigationController else { return }
+            guard let feed = nav.viewControllers.first as? FeedController else { return }
+            
+            feed.user = user
+        }
+    }
     
     // 메인 뷰컨트롤러에서 추가시 각 탭에 추가하기 편함.
     let actionButton: UIButton = {
@@ -28,7 +38,7 @@ class MainTabController: UITabBarController {
     }()
     
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //logout()
@@ -41,7 +51,13 @@ class MainTabController: UITabBarController {
     
     // MARK: - API
     
-    func authenticateUserAndConfigureUI(){
+    func fetchUser() {
+        UserService.shared.fetchUser{ user in
+            self.user = user
+        }
+    }
+    
+    func authenticateUserAndConfigureUI() {
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
                 let nav = UINavigationController(rootViewController: LoginController())
@@ -51,10 +67,12 @@ class MainTabController: UITabBarController {
         } else{
             configureViewControllers()
             configureUI()
+            
+            fetchUser()
         }
     }
     
-    func logout(){
+    func logout() {
         do{
             try Auth.auth().signOut()
         } catch let error {
@@ -66,7 +84,7 @@ class MainTabController: UITabBarController {
     @objc func actionButtonTapped(){
         
     }
-
+    
     
     
     // Mark: - Helpers
@@ -129,5 +147,5 @@ class MainTabController: UITabBarController {
         
         return nav
     }
-
+    
 }

@@ -16,6 +16,9 @@
 		2138A0BB281FCD6000B41E29 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 2138A0BA281FCD6000B41E29 /* FirebaseDatabase */; };
 		2138A0C3281FE8B900B41E29 /* Constance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A0C2281FE8B900B41E29 /* Constance.swift */; };
 		2138A0C5281FF97100B41E29 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A0C4281FF97100B41E29 /* AuthService.swift */; };
+		2138A0C72820E14D00B41E29 /* UserServiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A0C62820E14D00B41E29 /* UserServiece.swift */; };
+		2138A0C92820EC6200B41E29 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A0C82820EC6200B41E29 /* User.swift */; };
+		2138A0CC2820F1DB00B41E29 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2138A0CB2820F1DB00B41E29 /* SDWebImage */; };
 		21BD802F280FA96F007CE863 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD802E280FA96F007CE863 /* AppDelegate.swift */; };
 		21BD8031280FA96F007CE863 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BD8030280FA96F007CE863 /* SceneDelegate.swift */; };
 		21BD8036280FA96F007CE863 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BD8034280FA96F007CE863 /* Main.storyboard */; };
@@ -36,6 +39,8 @@
 		2138A0B7281FCCA300B41E29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2138A0C2281FE8B900B41E29 /* Constance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constance.swift; path = TwitterCloneApp/Utils/Constance.swift; sourceTree = SOURCE_ROOT; };
 		2138A0C4281FF97100B41E29 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = TwitterCloneApp/Utils/AuthService.swift; sourceTree = SOURCE_ROOT; };
+		2138A0C62820E14D00B41E29 /* UserServiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserServiece.swift; path = TwitterCloneApp/Utils/UserServiece.swift; sourceTree = SOURCE_ROOT; };
+		2138A0C82820EC6200B41E29 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = TwitterCloneApp/Utils/User.swift; sourceTree = SOURCE_ROOT; };
 		21BD802B280FA96F007CE863 /* TwitterCloneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterCloneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BD802E280FA96F007CE863 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21BD8030280FA96F007CE863 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +67,7 @@
 				2138A0BB281FCD6000B41E29 /* FirebaseDatabase in Frameworks */,
 				2138A0B2281FC31700B41E29 /* FirebaseMessaging in Frameworks */,
 				2138A0B0281FC31700B41E29 /* FirebaseFunctions in Frameworks */,
+				2138A0CC2820F1DB00B41E29 /* SDWebImage in Frameworks */,
 				2138A0AC281FC31700B41E29 /* FirebaseAuth in Frameworks */,
 				2138A0B4281FC31700B41E29 /* FirebaseStorage in Frameworks */,
 				2138A0AE281FC31700B41E29 /* FirebaseFirestore in Frameworks */,
@@ -129,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				2138A0C4281FF97100B41E29 /* AuthService.swift */,
+				2138A0C62820E14D00B41E29 /* UserServiece.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -163,6 +170,7 @@
 		21C4D10A2817CA4D0005F781 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2138A0C82820EC6200B41E29 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,6 +207,7 @@
 				2138A0B1281FC31700B41E29 /* FirebaseMessaging */,
 				2138A0B3281FC31700B41E29 /* FirebaseStorage */,
 				2138A0BA281FCD6000B41E29 /* FirebaseDatabase */,
+				2138A0CB2820F1DB00B41E29 /* SDWebImage */,
 			);
 			productName = TwitterCloneApp;
 			productReference = 21BD802B280FA96F007CE863 /* TwitterCloneApp.app */;
@@ -230,6 +239,7 @@
 			mainGroup = 21BD8022280FA96F007CE863;
 			packageReferences = (
 				2138A0AA281FC31700B41E29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2138A0CA2820F1DB00B41E29 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 21BD802C280FA96F007CE863 /* Products */;
 			projectDirPath = "";
@@ -265,7 +275,9 @@
 				21BD802F280FA96F007CE863 /* AppDelegate.swift in Sources */,
 				21C4D1192817E79E0005F781 /* Extensions.swift in Sources */,
 				21C4D11C2817FD2A0005F781 /* LoginController.swift in Sources */,
+				2138A0C72820E14D00B41E29 /* UserServiece.swift in Sources */,
 				2138A0C5281FF97100B41E29 /* AuthService.swift in Sources */,
+				2138A0C92820EC6200B41E29 /* User.swift in Sources */,
 				21C4D1132817CF660005F781 /* ExploreController.swift in Sources */,
 				21BD8031280FA96F007CE863 /* SceneDelegate.swift in Sources */,
 				2138A0C3281FE8B900B41E29 /* Constance.swift in Sources */,
@@ -501,6 +513,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		2138A0CA2820F1DB00B41E29 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -533,6 +553,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2138A0AA281FC31700B41E29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
+		};
+		2138A0CB2820F1DB00B41E29 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2138A0CA2820F1DB00B41E29 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

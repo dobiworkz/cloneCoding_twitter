@@ -33,6 +33,7 @@ class FeedController: UIViewController{
         let imageView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
         // 이미지뷰의 크기를 조정
         imageView.contentMode = .scaleAspectFit
+        imageView.setDimensions(width: 44, height: 44)
         navigationItem.titleView = imageView
     }
     
